@@ -1,0 +1,78 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  background-color: black;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
+
+  > a {
+    text-decoration: none;
+    color: rgb(198, 197, 197);
+  }
+}
+
+.header {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  >ul{
+    display: flex;
+    padding: 0.5rem;
+  }
+
+  > a { /* Add this CSS rule for the link wrapping the img */
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  > a > img { /* Adjust the styles for the img inside the link */
+    height: 100%;
+  }
+
+  > div {
+    margin-left: 1rem;
+    padding: 1rem;
+    width: 100%;
+
+    > a {
+      margin: 1vmax;
+    }
+  }
+
+
+  > svg {
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: 2rem;
+
+    &:hover {
+      color: rgb(205, 207, 208);
+    }
+  }
+
+
+}
+
+.search{
+  height: 5vh;
+  border-color: white;
+  border-radius: .5rem;
+ 
+  padding: 2px;
+  width: 20vw;
+  background-color: black;
+  color: white;
+  }
+
+
+@media (max-width:600px) {
+  .header > ul{
+    display: none;
+  }
+}

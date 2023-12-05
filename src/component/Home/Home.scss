@@ -1,0 +1,78 @@
+.banner {
+  height: 60vh;
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  > h1,
+  p {
+    color: white;
+    font-size: 3rem;
+    // width: 50%;
+    z-index: 10;
+    margin-left: 3rem;
+    background: none;
+  }
+
+  > p {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    width: 40%;
+    font-weight: 900;
+  }
+}
+
+.row {
+  padding: 1rem;
+  background-color: black;
+
+  > h2 {
+    color: white;
+    margin: 0.3rem;
+    font-weight: 400;
+  }
+  > div {
+    display: flex;
+    overflow-x: auto;
+  }
+}
+
+.card {
+  width: 20vh;
+  margin: 0.3rem;
+  cursor: pointer;
+  transition: transform 0.5s;
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
+
+h3 {
+  margin: 0.3rem;
+  font-size: 1rem;
+  color: #8c8a8a; /* Adjust text color as needed */
+}
+
+.butt {
+  display: flex;
+background: none;
+  button {
+    outline: none;
+    border: none;
+    background: white;
+    z-index: 10;
+    border-radius: 5px;
+    margin-left: 3rem;
+    padding: 1rem;
+    width: 150px;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+}
+
