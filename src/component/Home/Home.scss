@@ -1,20 +1,26 @@
+// Home.scss
+
+$primary-color: white;
+$background-color: black;
+$accent-color: #8c8a8a;
+
 .banner {
   height: 60vh;
-  background-color: black;
+  background-color: $background-color;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   box-sizing: border-box;
-  > h1,
-  p {
-    color: white;
+
+  > h1, p {
+    color: $primary-color;
     font-size: 3rem;
-    // width: 50%;
     z-index: 10;
     margin-left: 3rem;
     background: none;
+    margin-top: 15px;
   }
 
   > p {
@@ -23,18 +29,20 @@
     word-spacing: 2px;
     width: 40%;
     font-weight: 900;
+    
   }
 }
 
 .row {
   padding: 1rem;
-  background-color: black;
+  background-color: $background-color;
 
   > h2 {
-    color: white;
+    color: $primary-color;
     margin: 0.3rem;
     font-weight: 400;
   }
+
   > div {
     display: flex;
     overflow-x: auto;
@@ -46,33 +54,40 @@
   margin: 0.3rem;
   cursor: pointer;
   transition: transform 0.5s;
+
   &:hover {
     transform: translateY(-10px);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
 h3 {
   margin: 0.3rem;
   font-size: 1rem;
-  color: #8c8a8a; /* Adjust text color as needed */
+  color: $accent-color;
 }
 
 .butt {
   display: flex;
-background: none;
+  background: none;
+
   button {
     outline: none;
     border: none;
-    background: white;
+    background: $primary-color;
     z-index: 10;
     border-radius: 5px;
     margin-left: 3rem;
     padding: 1rem;
     width: 150px;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
       opacity: 0.6;
     }
   }
 }
-

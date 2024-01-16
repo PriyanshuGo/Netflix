@@ -4,7 +4,6 @@ function Row({ tittle, arr }) {
 const imgUrl = "https://image.tmdb.org/t/p/w500";
 
   const Card = ({ img }) => <img src={img} alt="logo" className="card" />;
-  console.log()
   return (
     <div>
       <div className="row">

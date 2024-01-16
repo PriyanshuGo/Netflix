@@ -94,13 +94,15 @@ function Header() {
       )}
       </div>
 
+<form onSubmit={searchmovie}>
       <input
         type="text"
         placeholder="Search"
         value={searchTerm}
         onChange={SearchInput}
         className="search"
-      />
+        />
+        </form>
       <HiOutlineSearch onClick={searchmovie} disabled={!searchTerm} />
     </nav>
   );

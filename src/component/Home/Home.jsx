@@ -15,25 +15,6 @@ function Home() {
   const [topRated, setTopRated] = useState([]);
   const [trending, settrending] = useState([]);
   const [upcoming, setupcoming] = useState([]);
-  // const [searchTerm, setSearchTerm] = useState('');
-
-  // const SearchInput = (event) => {
-  //   setSearchTerm(event.target.value);
-  // };
-
-  // const searchmovie = async (e) => {
-  //   e.preventDefault();
-  //   // if (searchTerm==0) {
-  //   //   return;
-  //   // }
-  //   const {
-  //     data: { results },
-  //   } = await axios.get(
-  //     `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${apiKey}`
-  //     );
-  //   setupcoming(results);
-
-  // }
 
   useEffect(() => {
     const fecthPopular = async () => {
@@ -105,15 +86,7 @@ function Home() {
         </div>
       )}
 
-      {/* <form>
-        <input
-          type="text"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={SearchInput}
-        />
-        <input type="submit" onClick={searchmovie} disabled={!searchTerm}/>
-      </form> */}
+     
 
       <Row tittle={"Upcoming Movies"} arr={upcoming} />
       <Row tittle={"Popular on Netflix"} arr={popular} />
