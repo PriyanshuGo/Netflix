@@ -1,18 +1,16 @@
 import React from "react";
 
-function Row({ tittle, arr }) {
-const imgUrl = "https://image.tmdb.org/t/p/w500";
-
+function Row({ title, arr }) {
   const Card = ({ img }) => <img src={img} alt="logo" className="card" />;
   return (
     <div>
       <div className="row">
-        <h2>{tittle}</h2>
-        <div>
+        <h2>{title}</h2>
+        <div className="cards">
           {arr.map((item, index) => (
-            <div>
-              <Card key={index} img={`${imgUrl}${item.poster_path}`} />
-              <h3>{item.title}</h3>
+            <div key={index} className="card-container">
+              <Card img={item.Poster} />
+              <h3>{item.Title}</h3>
             </div>
           ))}
         </div>

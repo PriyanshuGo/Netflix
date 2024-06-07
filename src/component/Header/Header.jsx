@@ -5,10 +5,11 @@ import logo from "../../assets/logo.png";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const apiKey = "70e56d39a522f01573c553af813d2505";
+const url = "http://www.omdbapi.com/";
+const apiKey = "156e01c3";
 
 function Header() {
-  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, logout} = useAuth0();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [response, setResponse] = useState([]);
@@ -23,13 +24,15 @@ function Header() {
     if (!searchTerm) {
       return;
     }
-
     try {
-      const {
-        data: { results },
-      } = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${apiKey}`
-      );
+      const { results } = await axios.get(`${url}?s=${searchTerm}&apikey=${apiKey}`);
+      
+    // try {
+    //   const {
+    //     data: { results },
+    //   } = await axios.get(
+    //     `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${apiKey}`
+    //   );
 
       setResponse(results);
       console.log(results);

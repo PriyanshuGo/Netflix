@@ -1,4 +1,4 @@
-import "./Home.scss";
+"./Home.scss";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import img from "../../assets/cover.jpeg";
@@ -6,58 +6,29 @@ import { BiPlay } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import Row from "../Row";
 
-const url = "https://api.themoviedb.org/3/movie/";
-const apiKey = "70e56d39a522f01573c553af813d2505";
-const imgUrl = "https://image.tmdb.org/t/p/w500";
+const url = "http://www.omdbapi.com/";
+const apiKey = "156e01c3";
 
 function Home() {
   const [popular, setPopular] = useState([]);
   const [topRated, setTopRated] = useState([]);
-  const [trending, settrending] = useState([]);
-  const [upcoming, setupcoming] = useState([]);
+  const [trending, setTrending] = useState([]);
+  const [upcoming, setUpcoming] = useState([]);
 
   useEffect(() => {
-    const fecthPopular = async () => {
-      const {
-        data: { results },
-      } = await axios.get(
-        `${url}top_rated?api_key=${apiKey}&language=en-US&page=1`
-      );
-
-      setPopular(results);
+    const fetchMovies = async (query, setter) => {
+      try {
+        const { data } = await axios.get(`${url}?s=${query}&apikey=${apiKey}`);
+        setter(data.Search || []);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
-    const fecthTopRated = async () => {
-      const {
-        data: { results },
-      } = await axios.get(
-        `${url}popular?api_key=${apiKey}&language=en-US&page=1`
-      );
-      setTopRated(results);
-    };
-
-    const fecthTrending = async () => {
-      const {
-        data: { results },
-      } = await axios.get(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}&language=en-US&page=1`
-      );
-      settrending(results);
-    };
-
-    const fecthUpcoming = async () => {
-      const {
-        data: { results },
-      } = await axios.get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=2`
-      );
-      setupcoming(results);
-    };
-
-    fecthPopular();
-    fecthTopRated();
-    fecthTrending();
-    fecthUpcoming();
+    fetchMovies("popular", setPopular);
+    fetchMovies("top rated", setTopRated);
+    fetchMovies("trending", setTrending);
+    fetchMovies("upcoming", setUpcoming);
   }, []);
 
   return (
@@ -67,18 +38,18 @@ function Home() {
           <div
             className="banner"
             style={{
-              backgroundImage: `url('${imgUrl}${popular[1].poster_path}')`,
+              backgroundImage: `url('${popular[0]?.Poster !== "N/A" ? popular[0]?.Poster : img}')`,
             }}
           >
-            {popular [1] && <h1>{popular [1].original_title}</h1>}
-            {popular [1] && <p>{popular [1].overview}</p>}
+            {popular[0] && <h1>{popular[0].Title}</h1>}
+            {popular[0] && <p>{popular[0].Plot}</p>}
             <div className="butt">
               <button>
                 Play
                 <BiPlay style={{ background: "white" }} />
               </button>
               <button>
-                MyList
+                My List
                 <AiOutlinePlus style={{ background: "white" }} />
               </button>
             </div>
@@ -86,12 +57,10 @@ function Home() {
         </div>
       )}
 
-     
-
-      <Row tittle={"Upcoming Movies"} arr={upcoming} />
-      <Row tittle={"Popular on Netflix"} arr={popular} />
-      <Row tittle={"Top Rated on Netflix"} arr={topRated} />
-      <Row tittle={"Trending Movies"} arr={trending} />
+      <Row title={"Upcoming Movies"} arr={upcoming} />
+      <Row title={"Popular Movies"} arr={popular} />
+      <Row title={"Top Rated Movies"} arr={topRated} />
+      <Row title={"Trending Movies"} arr={trending} />
     </section>
   );
 }
